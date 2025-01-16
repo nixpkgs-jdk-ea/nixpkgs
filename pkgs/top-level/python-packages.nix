@@ -5383,6 +5383,8 @@ self: super: with self; {
 
   flatdict = callPackage ../development/python-modules/flatdict { };
 
+  flatlatex = callPackage ../development/python-modules/flatlatex { };
+
   flatten-dict = callPackage ../development/python-modules/flatten-dict { };
 
   flatten-json = callPackage ../development/python-modules/flatten-json { };
