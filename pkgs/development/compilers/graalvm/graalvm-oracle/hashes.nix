@@ -4,6 +4,24 @@
 # $ rg -No "(https://.+)\"" -r '$1' pkgs/development/compilers/graalvm/graalvm-oracle/hashes.nix | \
 #   parallel -k 'echo {}; nix --extra-experimental-features nix-command hash convert --hash-algo sha256 --to sri $(curl -s {}.sha256)'
 {
+  "25-ea-31" = {
+    "aarch64-linux" = {
+      hash = "sha256-49uRFBIJqOr+095OrIN8P3nwnjQO/rnyQ5Pzo7Q3c4o=";
+      url = "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-25.0.0-ea.31/graalvm-jdk-25.0.0-ea.31_linux-aarch64_bin.tar.gz";
+    };
+    "x86_64-linux" = {
+      hash = "sha256-IisTlAXW2Gxze7avu1ABOgwSctcsSaruav3vyFZFgi4=";
+      url = "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-25.0.0-ea.31/graalvm-jdk-25.0.0-ea.31_linux-x64_bin.tar.gz";
+    };
+    "x86_64-darwin" = {
+      hash = "sha256-3vZRh/0rbVwYl5O2Oli/u7+/lanaCZ+SLzHj3jHvNDs=";
+      url = "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-25.0.0-ea.31/graalvm-jdk-25.0.0-ea.31_macos-x64_bin.tar.gz";
+    };
+    "aarch64-darwin" = {
+      hash = "sha256-32SEPayzMHrxBW2AeNjv/jFuiLi546vMgJEaw0Kc7Gs=";
+      url = "https://github.com/graalvm/oracle-graalvm-ea-builds/releases/download/jdk-25.0.0-ea.31/graalvm-jdk-25.0.0-ea.31_macos-aarch64_bin.tar.gz";
+    };
+  };
   "23" = {
     "aarch64-linux" = {
       hash = "sha256-VlB664/l7NWFQrPE3vEJvCXkEzKEJ0ck/HNU5pGGTwU=";
