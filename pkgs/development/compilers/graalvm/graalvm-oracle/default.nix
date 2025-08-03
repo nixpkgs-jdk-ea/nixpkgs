@@ -3,6 +3,7 @@
   stdenv,
   fetchurl,
   graalvmPackages,
+  onnxruntime,
   useMusl ? false,
   version ? "23",
 }:
