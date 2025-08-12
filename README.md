@@ -13,6 +13,8 @@
   <a href="https://opencollective.com/nixos"><img src="https://opencollective.com/nixos/tiers/supporter/badge.svg?label=supporters&color=brightgreen" alt="Open Collective supporters" /></a>
 </p>
 
+[Nixpkgs-jdk-ea/nixpkgs](https://github.com/nixpkgs-jdk-ea/nixpkgs) is a fork of [Nixpkgs](https://github.com/nixos/nixpkgs) that provides Early Access versions of a subset of the JDK packages available within Nixpkgs. For information, please see our GitHub Organization page at: [Nixpkgs-jdk-ea](https://github.com/nixpkgs-jdk-ea). The default branch is currently `jdk-ea-25` which is an integration branch that collects all patches/PRs that provide EA versions of Nixpkgs JDKs. See [Nixpkgs-jdk-ea](https://github.com/nixpkgs-jdk-ea) for the current list.
+
 [Nixpkgs](https://github.com/nixos/nixpkgs) is a collection of over 120,000 software packages that can be installed with the [Nix](https://nixos.org/nix/) package manager.
 It also implements [NixOS](https://nixos.org/nixos/), a purely-functional Linux distribution.
 
