@@ -1007,6 +1007,8 @@ self: super: with self; {
 
   astunparse = callPackage ../development/python-modules/astunparse { };
 
+  asusrouter = callPackage ../development/python-modules/asusrouter { };
+
   asyauth = callPackage ../development/python-modules/asyauth { };
 
   asyauth-bad = callPackage ../development/python-modules/asyauth-bad { };
@@ -2061,6 +2063,8 @@ self: super: with self; {
   boschshcpy = callPackage ../development/python-modules/boschshcpy { };
 
   bot-safe-agents = callPackage ../development/python-modules/bot-safe-agents { };
+
+  botan3 = callPackage ../development/python-modules/botan3 { inherit (pkgs) botan3; };
 
   boto3 = callPackage ../development/python-modules/boto3 { };
 
@@ -3550,6 +3554,8 @@ self: super: with self; {
   denonavr = callPackage ../development/python-modules/denonavr { };
 
   dep-logic = callPackage ../development/python-modules/dep-logic { };
+
+  dependency-groups = callPackage ../development/python-modules/dependency-groups { };
 
   dependency-injector = callPackage ../development/python-modules/dependency-injector { };
 
@@ -6798,6 +6804,8 @@ self: super: with self; {
 
   hypchat = callPackage ../development/python-modules/hypchat { };
 
+  hyper-connections = callPackage ../development/python-modules/hyper-connections { };
+
   hypercorn = callPackage ../development/python-modules/hypercorn { };
 
   hyperframe = callPackage ../development/python-modules/hyperframe { };
@@ -8649,6 +8657,8 @@ self: super: with self; {
 
   loca = callPackage ../development/python-modules/loca { };
 
+  local-attention = callPackage ../development/python-modules/local-attention { };
+
   localimport = callPackage ../development/python-modules/localimport { };
 
   localstack-client = callPackage ../development/python-modules/localstack-client { };
@@ -9526,6 +9536,8 @@ self: super: with self; {
 
   mopeka-iot-ble = callPackage ../development/python-modules/mopeka-iot-ble { };
 
+  mopidyapi = callPackage ../development/python-modules/mopidyapi { };
+
   more-itertools = callPackage ../development/python-modules/more-itertools { };
 
   more-properties = callPackage ../development/python-modules/more-properties { };
@@ -10365,6 +10377,8 @@ self: super: with self; {
 
   nexusformat = callPackage ../development/python-modules/nexusformat { };
 
+  nexusrpc = callPackage ../development/python-modules/nexusrpc { };
+
   nfcpy = callPackage ../development/python-modules/nfcpy { };
 
   nftables = callPackage ../os-specific/linux/nftables/python.nix { inherit (pkgs) nftables; };
@@ -10472,6 +10486,8 @@ self: super: with self; {
   noise = callPackage ../development/python-modules/noise { };
 
   noiseprotocol = callPackage ../development/python-modules/noiseprotocol { };
+
+  noisereduce = callPackage ../development/python-modules/noisereduce { };
 
   nomadnet = callPackage ../development/python-modules/nomadnet { };
 
@@ -13508,6 +13524,8 @@ self: super: with self; {
 
   pyoppleio-legacy = callPackage ../development/python-modules/pyoppleio-legacy { };
 
+  pyoprf = callPackage ../development/python-modules/pyoprf { };
+
   pyorc = callPackage ../development/python-modules/pyorc { };
 
   pyorthanc = callPackage ../development/python-modules/pyorthanc { };
@@ -14065,6 +14083,8 @@ self: super: with self; {
   pysnow = callPackage ../development/python-modules/pysnow { };
 
   pysocks = callPackage ../development/python-modules/pysocks { };
+
+  pysodium = callPackage ../development/python-modules/pysodium { };
 
   pysol-cards = callPackage ../development/python-modules/pysol-cards { };
 
@@ -15213,6 +15233,8 @@ self: super: with self; {
 
   pyworld = callPackage ../development/python-modules/pyworld { };
 
+  pyworxcloud = callPackage ../development/python-modules/pyworxcloud { };
+
   pyws66i = callPackage ../development/python-modules/pyws66i { };
 
   pyx = callPackage ../development/python-modules/pyx { };
@@ -16293,6 +16315,8 @@ self: super: with self; {
 
   secure = callPackage ../development/python-modules/secure { };
 
+  securestring = callPackage ../development/python-modules/securestring { };
+
   securesystemslib = callPackage ../development/python-modules/securesystemslib { };
 
   securetar = callPackage ../development/python-modules/securetar { };
@@ -16683,6 +16707,8 @@ self: super: with self; {
       python3Packages = self;
     }
   );
+
+  slh-dsa = callPackage ../development/python-modules/slh-dsa { };
 
   slicedimage = callPackage ../development/python-modules/slicedimage { };
 
@@ -19539,7 +19565,12 @@ self: super: with self; {
 
   vtjp = callPackage ../development/python-modules/vtjp { };
 
-  vtk = toPythonModule (pkgs.vtk-full.override { python3Packages = self; });
+  vtk = toPythonModule (
+    pkgs.vtk.override {
+      pythonSupport = true;
+      python3Packages = self;
+    }
+  );
 
   vttlib = callPackage ../development/python-modules/vttlib { };
 
