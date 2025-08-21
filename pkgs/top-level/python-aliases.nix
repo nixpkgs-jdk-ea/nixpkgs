@@ -258,6 +258,7 @@ mapAliases ({
   fenics = throw "fenics has been removed, use fenics-dolfinx instead"; # added 2025-08-07
   filebrowser_safe = filebrowser-safe; # added 2024-01-03
   filemagic = throw "inactive since 2014, so use python-magic instead"; # added 2022-11-19
+  filesplit = throw "filesplit has been removed, since it is unmaintained"; # added 2025-08-20
   flaskbabel = flask-babel; # added 2023-01-19
   flask-babelex = throw "flask-babelex package has been removed, use flask-babel instead"; # added 2024-10-07
   flask_assets = flask-assets; # added 2023-08-23
@@ -323,6 +324,7 @@ mapAliases ({
   guzzle_sphinx_theme = guzzle-sphinx-theme; # added 2023-10-16
   ha-av = throw "ha-av was removed, because it is no longer maintained"; # added 2022-04-06
   HAP-python = hap-python; # added 2021-06-01
+  hahomematic = throw "hahomematic has been superseded by aiohomematic"; # added 2025-08-16
   hangups = throw "hangups was removed because Google Hangouts has been shut down"; # added 2023-02-13
   hbmqtt = throw "hbmqtt was removed because it is no longer maintained"; # added 2021-11-07
   hcs_utils = hcs-utils; # added 2024-01-06
@@ -625,6 +627,8 @@ mapAliases ({
   py-scrypt = scrypt; # added 2025-08-07
   pysha3 = throw "pysha3 has been removed, use safe-pysha3 instead"; # added 2023-05-20
   pysimplegui = throw "pysimplegui update to v5 broke the package, it now needs a license key to decrypt the source code"; # added 2024-09-16
+  pyside6-fluent-widgets = throw "pyside6-fluent-widgets has been removed, since it is unmaintained"; # added 2025-08-20
+  pysidesix-frameless-window = throw "pysidesix-frameless-window has been removed, since it is unmaintained"; # added 2025-08-20
   pysmart-smartx = pysmart; # added 2021-10-22
   pySmartDL = pysmartdl; # added 2023-10-11
   pysmi-lextudio = pysmi; # added 2024-07-18
