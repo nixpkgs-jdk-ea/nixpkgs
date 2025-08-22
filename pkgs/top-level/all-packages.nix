@@ -320,6 +320,8 @@ with pkgs;
 
   cameractrls-gtk3 = cameractrls.override { withGtk = 3; };
 
+  cgal_5 = callPackage ../by-name/cg/cgal/5.nix { };
+
   checkpointBuildTools = callPackage ../build-support/checkpoint-build.nix { };
 
   celeste-classic-pm = pkgs.celeste-classic.override {
@@ -696,6 +698,8 @@ with pkgs;
   fetchFrom9Front = callPackage ../build-support/fetch9front { };
 
   fetchFromRepoOrCz = callPackage ../build-support/fetchrepoorcz { };
+
+  fetchFromRadicle = callPackage ../build-support/fetchradicle { };
 
   fetchgx = callPackage ../build-support/fetchgx { };
 
@@ -2084,8 +2088,6 @@ with pkgs;
 
   futhark = haskell.lib.compose.justStaticExecutables haskellPackages.futhark;
 
-  qt-video-wlr = libsForQt5.callPackage ../applications/misc/qt-video-wlr { };
-
   g2o = libsForQt5.callPackage ../development/libraries/g2o { };
 
   inherit (go-containerregistry) crane gcrane;
@@ -2612,10 +2614,6 @@ with pkgs;
   };
 
   cask-server = libsForQt5.callPackage ../applications/misc/cask-server { };
-
-  code-browser-qt = libsForQt5.callPackage ../applications/editors/code-browser { withQt = true; };
-  code-browser-gtk2 = callPackage ../applications/editors/code-browser { withGtk2 = true; };
-  code-browser-gtk = callPackage ../applications/editors/code-browser { withGtk3 = true; };
 
   cffconvert = python3Packages.toPythonApplication python3Packages.cffconvert;
 
@@ -3346,8 +3344,6 @@ with pkgs;
   kronometer = libsForQt5.callPackage ../tools/misc/kronometer { };
 
   kwalletcli = libsForQt5.callPackage ../tools/security/kwalletcli { };
-
-  peruse = libsForQt5.callPackage ../tools/misc/peruse { };
 
   ksmoothdock = libsForQt5.callPackage ../applications/misc/ksmoothdock { };
 
@@ -4230,8 +4226,6 @@ with pkgs;
 
   spoof-mac = python3Packages.callPackage ../tools/networking/spoof-mac { };
 
-  soundkonverter = libsForQt5.soundkonverter;
-
   stm32loader = with python3Packages; toPythonApplication stm32loader;
 
   solc-select = with python3Packages; toPythonApplication solc-select;
@@ -4550,9 +4544,6 @@ with pkgs;
 
   xdot = with python3Packages; toPythonApplication xdot;
 
-  xflux = callPackage ../tools/misc/xflux { };
-  xflux-gui = python3Packages.callPackage ../tools/misc/xflux/gui.nix { };
-
   libxfs = xfsprogs.dev;
 
   xmlto = callPackage ../tools/typesetting/xmlto {
@@ -4587,10 +4578,6 @@ with pkgs;
 
   # To expose more packages for Yi, override the extraPackages arg.
   yi = callPackage ../applications/editors/yi/wrapper.nix { };
-
-  zbackup = callPackage ../tools/backup/zbackup {
-    protobuf = protobuf_21;
-  };
 
   zbar = libsForQt5.callPackage ../tools/graphics/zbar { };
 
@@ -5893,10 +5880,6 @@ with pkgs;
 
   teyjus = callPackage ../development/compilers/teyjus {
     inherit (ocaml-ng.ocamlPackages_4_14) buildDunePackage;
-  };
-
-  thrust = callPackage ../development/tools/thrust {
-    gconf = gnome2.GConf;
   };
 
   urweb = callPackage ../development/compilers/urweb {
@@ -7456,8 +7439,6 @@ with pkgs;
       description = "${oldAttrs.meta.description} (without GDB)";
     };
   });
-
-  qcachegrind = libsForQt5.callPackage ../development/tools/analysis/qcachegrind { };
 
   vcpkg-tool-unwrapped = vcpkg-tool.override { doWrap = false; };
 
@@ -11155,10 +11136,6 @@ with pkgs;
 
   bibata-cursors-translucent = callPackage ../data/icons/bibata-cursors/translucent.nix { };
 
-  breath-theme = libsForQt5.callPackage ../data/themes/breath-theme { };
-
-  colloid-kde = libsForQt5.callPackage ../data/themes/colloid-kde { };
-
   dejavu_fonts = lowPrio (callPackage ../data/fonts/dejavu-fonts { });
 
   # solve collision for nix-env before https://github.com/NixOS/nix/pull/815
@@ -11205,8 +11182,6 @@ with pkgs;
   font-awesome_5 = (callPackage ../data/fonts/font-awesome { }).v5;
   font-awesome_6 = (callPackage ../data/fonts/font-awesome { }).v6;
   font-awesome = font-awesome_6;
-
-  graphite-kde-theme = libsForQt5.callPackage ../data/themes/graphite-kde-theme { };
 
   palenight-theme = callPackage ../data/themes/gtk-theme-framework { theme = "palenight"; };
 
@@ -11257,17 +11232,11 @@ with pkgs;
     inherit (pantheon) elementary-icon-theme;
   };
 
-  layan-kde = libsForQt5.callPackage ../data/themes/layan-kde { };
-
   inherit (callPackages ../data/fonts/liberation-fonts { })
     liberation_ttf_v1
     liberation_ttf_v2
     ;
   liberation_ttf = liberation_ttf_v2;
-
-  lightly-qt = libsForQt5.callPackage ../data/themes/lightly-qt { };
-
-  lightly-boehs = libsForQt5.callPackage ../data/themes/lightly-boehs { };
 
   # ltunifi and solaar both provide udev rules but solaar's rules are more
   # up-to-date so we simply use that instead of having to maintain our own rules
@@ -11345,10 +11314,6 @@ with pkgs;
   shaderc = callPackage ../development/compilers/shaderc {
     inherit (darwin) autoSignDarwinBinariesHook;
   };
-
-  sierra-breeze-enhanced =
-    libsForQt5.callPackage ../data/themes/kwin-decorations/sierra-breeze-enhanced
-      { useQt5 = true; };
 
   scheherazade-new = scheherazade.override {
     version = "4.300";
@@ -12394,8 +12359,6 @@ with pkgs;
 
   kbibtex = libsForQt5.callPackage ../applications/office/kbibtex { };
 
-  kexi = libsForQt5.callPackage ../applications/office/kexi { };
-
   kiwix = libsForQt5.callPackage ../applications/misc/kiwix { };
 
   kiwix-tools = callPackage ../applications/misc/kiwix/tools.nix { };
@@ -12408,7 +12371,8 @@ with pkgs;
 
   kmplayer = libsForQt5.callPackage ../applications/video/kmplayer { };
 
-  kmymoney = libsForQt5.callPackage ../applications/office/kmymoney { };
+  alkimia = kdePackages.callPackage ../development/libraries/alkimia { };
+  kmymoney = kdePackages.callPackage ../applications/office/kmymoney { };
 
   kotatogram-desktop =
     callPackage ../applications/networking/instant-messengers/telegram/kotatogram-desktop
@@ -13530,8 +13494,6 @@ with pkgs;
     wlroots = wlroots_0_19;
   };
 
-  trojita = libsForQt5.callPackage ../applications/networking/mailreaders/trojita { };
-
   tuxclocker = libsForQt5.callPackage ../applications/misc/tuxclocker {
     tuxclocker-plugins = tuxclocker-plugins-with-unfree;
   };
@@ -13632,10 +13594,6 @@ with pkgs;
   };
 
   virt-manager = callPackage ../applications/virtualization/virt-manager { };
-
-  virt-manager-qt = libsForQt5.callPackage ../applications/virtualization/virt-manager/qt.nix {
-    qtermwidget = lxqt.qtermwidget_1_4;
-  };
 
   virtualbox = libsForQt5.callPackage ../applications/virtualization/virtualbox {
     stdenv = stdenv_32bit;
@@ -13869,10 +13827,6 @@ with pkgs;
           wrapQtAppsHook
           ;
       };
-
-  gxneur = callPackage ../applications/misc/gxneur {
-    inherit (gnome2) libglade GConf;
-  };
 
   xournalpp = callPackage ../applications/graphics/xournalpp {
     lua = lua5_3;
@@ -14635,8 +14589,6 @@ with pkgs;
     appls = [ prio ];
   };
 
-  deepin = recurseIntoAttrs (callPackage ../desktops/deepin { });
-
   enlightenment = recurseIntoAttrs (callPackage ../desktops/enlightenment { });
 
   expidus = recurseIntoAttrs (
@@ -14702,14 +14654,6 @@ with pkgs;
 
   xfce = recurseIntoAttrs (callPackage ../desktops/xfce { });
 
-  plasma-applet-volumewin7mixer =
-    libsForQt5.callPackage ../applications/misc/plasma-applet-volumewin7mixer
-      { };
-
-  plasma-theme-switcher = libsForQt5.callPackage ../applications/misc/plasma-theme-switcher { };
-
-  plasma-pass = libsForQt5.callPackage ../tools/security/plasma-pass { };
-
   inherit
     (callPackages ../applications/misc/redshift {
       inherit (python3Packages)
@@ -14725,8 +14669,6 @@ with pkgs;
     ;
 
   redshift-plasma-applet = libsForQt5.callPackage ../applications/misc/redshift-plasma-applet { };
-
-  latte-dock = libsForQt5.callPackage ../applications/misc/latte-dock { };
 
   ### SCIENCE/CHEMISTY
 
@@ -14757,16 +14699,9 @@ with pkgs;
 
   ### SCIENCE/GEOMETRY
 
-  tetgen = callPackage ../applications/science/geometry/tetgen { }; # AGPL3+
-  tetgen_1_4 = callPackage ../applications/science/geometry/tetgen/1.4.nix { }; # MIT
-
   ### SCIENCE/BENCHMARK
 
   ### SCIENCE/BIOLOGY
-
-  blast = callPackage ../applications/science/biology/blast { };
-
-  blast-bin = callPackage ../applications/science/biology/blast/bin.nix { };
 
   cd-hit = callPackage ../applications/science/biology/cd-hit {
     inherit (llvmPackages) openmp;
@@ -14780,9 +14715,7 @@ with pkgs;
     inherit (llvmPackages) openmp;
   };
 
-  nest = callPackage ../applications/science/biology/nest { };
-
-  nest-mpi = callPackage ../applications/science/biology/nest { withMpi = true; };
+  nest-mpi = nest.override { withMpi = true; };
 
   neuron-mpi = neuron.override { useMpi = true; };
 
@@ -14794,8 +14727,6 @@ with pkgs;
   minc_tools = callPackage ../applications/science/biology/minc-tools {
     inherit (perlPackages) perl TextFormat;
   };
-
-  obitools3 = callPackage ../applications/science/biology/obitools/obitools3.nix { };
 
   raxml-mpi = raxml.override { useMpi = true; };
 
@@ -14813,15 +14744,11 @@ with pkgs;
 
   ### SCIENCE/MACHINE LEARNING
 
-  sc2-headless = callPackage ../applications/science/machine-learning/sc2-headless { };
-
   streamlit = with python3Packages; toPythonApplication streamlit;
 
   ### SCIENCE/MATH
 
   blas-ilp64 = blas.override { isILP64 = true; };
-
-  cantor = libsForQt5.cantor;
 
   labplot = libsForQt5.callPackage ../applications/science/math/labplot { };
 
@@ -14855,17 +14782,15 @@ with pkgs;
     rocmSupport = true;
   };
 
-  mathematica = callPackage ../applications/science/math/mathematica { };
-
-  mathematica-webdoc = callPackage ../applications/science/math/mathematica {
+  mathematica-webdoc = mathematica.override {
     webdoc = true;
   };
 
-  mathematica-cuda = callPackage ../applications/science/math/mathematica {
+  mathematica-cuda = mathematica.override {
     cudaSupport = true;
   };
 
-  mathematica-webdoc-cuda = callPackage ../applications/science/math/mathematica {
+  mathematica-webdoc-cuda = mathematica.override {
     webdoc = true;
     cudaSupport = true;
   };
@@ -14883,15 +14808,11 @@ with pkgs;
   };
   suitesparse = suitesparse_5_3;
 
-  trilinos = callPackage ../development/libraries/science/math/trilinos { };
-
-  trilinos-mpi = callPackage ../development/libraries/science/math/trilinos { withMPI = true; };
+  trilinos-mpi = trilinos.override { withMPI = true; };
 
   wolfram-engine = libsForQt5.callPackage ../applications/science/math/wolfram-engine { };
 
   wolfram-for-jupyter-kernel = callPackage ../applications/editors/jupyter-kernels/wolfram { };
-
-  wolfram-notebook = callPackage ../applications/science/math/wolfram-engine/notebook.nix { };
 
   ### SCIENCE/MOLECULAR-DYNAMICS
 
@@ -15045,14 +14966,11 @@ with pkgs;
     ocaml = ocaml-ng.ocamlPackages_4_14_unsafe_string.ocaml;
   };
 
-  eprover = callPackage ../applications/science/logic/eprover { };
-
-  eprover-ho = callPackage ../applications/science/logic/eprover { enableHO = true; };
+  eprover-ho = eprover.override { enableHO = true; };
 
   giac-with-xcas = giac.override { enableGUI = true; };
 
-  glucose = callPackage ../applications/science/logic/glucose { };
-  glucose-syrup = callPackage ../applications/science/logic/glucose {
+  glucose-syrup = glucose.override {
     enableUnfree = true;
   };
 
@@ -15081,8 +14999,6 @@ with pkgs;
     inherit (ocaml-ng.ocamlPackages_4_14_unsafe_string) ocaml camlp4;
   };
 
-  leo3-bin = callPackage ../applications/science/logic/leo3/binary.nix { };
-
   prooftree = callPackage ../applications/science/logic/prooftree {
     ocamlPackages = ocaml-ng.ocamlPackages_4_12;
   };
@@ -15091,34 +15007,15 @@ with pkgs;
     inherit (ocaml-ng.ocamlPackages_4_14) ocaml;
   };
 
-  spass = callPackage ../applications/science/logic/spass {
-    stdenv = gccStdenv;
-  };
-
   statverif = callPackage ../applications/science/logic/statverif {
     ocaml = ocaml-ng.ocamlPackages_4_14_unsafe_string.ocaml;
   };
 
-  veriT = callPackage ../applications/science/logic/verit {
-    stdenv = gccStdenv;
-  };
-
   why3 = callPackage ../applications/science/logic/why3 { coqPackages = coqPackages_8_20; };
 
-  yices = callPackage ../applications/science/logic/yices {
-    gmp-static = gmp.override { withStatic = true; };
-  };
-
-  tlaplus = callPackage ../applications/science/logic/tlaplus {
-    jre = jre8; # TODO: remove override https://github.com/NixOS/nixpkgs/pull/89731
-  };
-  tlaplus18 = callPackage ../applications/science/logic/tlaplus/tlaplus18.nix { };
   tlaps = callPackage ../applications/science/logic/tlaplus/tlaps.nix {
     inherit (ocaml-ng.ocamlPackages_4_14_unsafe_string) ocaml;
   };
-  tlaplusToolbox = callPackage ../applications/science/logic/tlaplus/toolbox.nix { };
-
-  avy = callPackage ../applications/science/logic/avy { };
 
   ### SCIENCE / ENGINEERING
 
@@ -15206,9 +15103,6 @@ with pkgs;
 
   gap-full = lowPrio (gap.override { packageSet = "full"; });
 
-  geogebra = callPackage ../applications/science/math/geogebra { };
-  geogebra6 = callPackage ../applications/science/math/geogebra/geogebra6.nix { };
-
   maxima = callPackage ../applications/science/math/maxima {
     lisp-compiler = sbcl;
   };
@@ -15222,13 +15116,6 @@ with pkgs;
     };
   };
 
-  pari = callPackage ../applications/science/math/pari { };
-  gp2c = callPackage ../applications/science/math/pari/gp2c.nix { };
-
-  raspa = callPackage ../applications/science/molecular-dynamics/raspa { };
-
-  raspa-data = callPackage ../applications/science/molecular-dynamics/raspa/data.nix { };
-
   yacas = libsForQt5.callPackage ../applications/science/math/yacas { };
 
   yacas-gui = yacas.override {
@@ -15240,9 +15127,7 @@ with pkgs;
 
   ### SCIENCE / MISC
 
-  boinc = callPackage ../applications/science/misc/boinc { };
-
-  boinc-headless = callPackage ../applications/science/misc/boinc { headless = true; };
+  boinc-headless = boinc.override { headless = true; };
 
   celestia = callPackage ../applications/science/astronomy/celestia {
     inherit (gnome2) gtkglext;
@@ -15250,19 +15135,11 @@ with pkgs;
 
   convertall = qt5.callPackage ../applications/science/misc/convertall { };
 
-  cytoscape = callPackage ../applications/science/misc/cytoscape {
-    jre = openjdk17;
-  };
-
   faissWithCuda = faiss.override {
     cudaSupport = true;
   };
 
   gplates = libsForQt5.callPackage ../applications/science/misc/gplates { };
-
-  golly = callPackage ../applications/science/misc/golly {
-    wxGTK = wxGTK32;
-  };
 
   megam = callPackage ../applications/science/misc/megam {
     inherit (ocaml-ng.ocamlPackages_4_14) ocaml;
@@ -15304,25 +15181,11 @@ with pkgs;
 
   autotiling = python3Packages.callPackage ../misc/autotiling { };
 
-  avell-unofficial-control-center =
-    callPackage ../applications/misc/avell-unofficial-control-center
-      { };
-
   brgenml1lpr = pkgsi686Linux.callPackage ../misc/cups/drivers/brgenml1lpr { };
-
-  cups = callPackage ../misc/cups { };
-
-  cups-filters = callPackage ../misc/cups/filters.nix { };
-
-  cups-pk-helper = callPackage ../misc/cups/cups-pk-helper.nix { };
 
   foomatic-db-ppds-withNonfreeDb = callPackage ../by-name/fo/foomatic-db-ppds/package.nix {
     withNonfreeDb = true;
   };
-
-  gutenprint = callPackage ../misc/drivers/gutenprint { };
-
-  gutenprintBin = callPackage ../misc/drivers/gutenprint/bin.nix { };
 
   dcp375cwlpr = (pkgsi686Linux.callPackage ../misc/cups/drivers/brother/dcp375cw { }).driver;
 
@@ -15351,8 +15214,6 @@ with pkgs;
 
   flashprint = libsForQt5.callPackage ../applications/misc/flashprint { };
 
-  fahclient = callPackage ../applications/science/misc/foldingathome/client.nix { };
-
   gajim = callPackage ../applications/networking/instant-messengers/gajim {
     inherit (gst_all_1) gstreamer gst-plugins-base gst-libav;
     gst-plugins-good = gst_all_1.gst-plugins-good.override { gtkSupport = true; };
@@ -15363,17 +15224,7 @@ with pkgs;
     binutils-arm-embedded = pkgsCross.arm-embedded.buildPackages.binutils;
   };
 
-  gotrue = callPackage ../tools/security/gotrue { };
-
-  gotrue-supabase = callPackage ../tools/security/gotrue/supabase.nix { };
-
-  gowitness = callPackage ../tools/security/gowitness {
-    buildGoModule = buildGo123Module;
-  };
-
-  helmfile = callPackage ../applications/networking/cluster/helmfile { };
-
-  helmfile-wrapped = callPackage ../applications/networking/cluster/helmfile {
+  helmfile-wrapped = helmfile.override {
     inherit (kubernetes-helm-wrapped.passthru) pluginsDir;
   };
 
@@ -15690,7 +15541,7 @@ with pkgs;
     hasktags = haskellPackages.hasktags;
   };
 
-  tellico = libsForQt5.callPackage ../applications/misc/tellico { };
+  tellico = kdePackages.callPackage ../applications/misc/tellico { };
 
   termpdfpy = python3Packages.callPackage ../applications/misc/termpdf.py { };
 
@@ -15725,8 +15576,6 @@ with pkgs;
   };
 
   py-wacz = with python3Packages; toPythonApplication wacz;
-
-  wacomtablet = libsForQt5.callPackage ../tools/misc/wacomtablet { };
 
   wibo = pkgsi686Linux.callPackage ../applications/emulators/wibo { };
 
@@ -15789,16 +15638,6 @@ with pkgs;
       languages = lib.importJSON ../servers/web-apps/wordpress/packages/languages.json;
     }
   );
-
-  xsw = callPackage ../applications/misc/xsw {
-    # Enable the next line to use this in terminal.
-    # Note that it requires sixel capable terminals such as mlterm
-    # or xterm -ti 340
-    SDL = SDL_sixel;
-    SDL_gfx = SDL_gfx.override { SDL = SDL_sixel; };
-    SDL_image = SDL_image.override { SDL = SDL_sixel; };
-    SDL_ttf = SDL_ttf.override { SDL = SDL_sixel; };
-  };
 
   yamale = with python3Packages; toPythonApplication yamale;
 

@@ -543,10 +543,6 @@
   ./services/desktops/blueman.nix
   ./services/desktops/bonsaid.nix
   ./services/desktops/cpupower-gui.nix
-  ./services/desktops/deepin/app-services.nix
-  ./services/desktops/deepin/dde-api.nix
-  ./services/desktops/deepin/dde-daemon.nix
-  ./services/desktops/deepin/deepin-anything.nix
   ./services/desktops/dleyna.nix
   ./services/desktops/espanso.nix
   ./services/desktops/flatpak.nix
@@ -1158,7 +1154,6 @@
   ./services/networking/frp.nix
   ./services/networking/frr.nix
   ./services/networking/g3proxy.nix
-  ./services/networking/gateone.nix
   ./services/networking/gdomap.nix
   ./services/networking/ghostunnel.nix
   ./services/networking/git-daemon.nix
